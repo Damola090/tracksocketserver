@@ -7,6 +7,9 @@ const cors = require("cors");
 //Socket.io Module
 const socketIo = require("socket.io");
 
+const superUser = require('../Data/Tracking/Track');
+console.log(superUser)
+
 //Import Our Express Application
 const app = express();
 
@@ -31,7 +34,7 @@ server.listen(PORT, () => {
 });
 
 //STEP 1-------.Create a Namespace Object
-const namespaces = require("../Data/NameSpaces");
+const { namespaces } = require("../Data/NameSpaces");
 
 //STEP 2A--------.open default connection
 io.on("connection", (socket) => {
