@@ -4,7 +4,7 @@ const Customer = require("../../Models/Tracking/Customer");
 const Trip = require("../../Models/Tracking/Trip");
 
 // one superUser
-const superUser = new SuperUser("s1", "YipOnline");
+const superUser = new SuperUser("s1", "YipOnline", "/map-track");
 
 // 5 Field Agents
 const fieldAgent1 = new FieldAgent("f1", "Ada");
@@ -34,6 +34,12 @@ const trip3 = new Trip("t3", "f3", "c3");
 const trip4 = new Trip("t4", "f4", "c4");
 const trip5 = new Trip("t5", "f5", "c5");
 
+superUser.addTrip(trip1);
+superUser.addTrip(trip2);
+superUser.addTrip(trip3);
+superUser.addTrip(trip4);
+superUser.addTrip(trip5);
+
 // Each Field Agent was assigned 1 trip each
 fieldAgent1.addTrip(trip1);
 fieldAgent2.addTrip(trip2);
@@ -41,13 +47,10 @@ fieldAgent3.addTrip(trip3);
 fieldAgent4.addTrip(trip4);
 fieldAgent5.addTrip(trip5);
 
-
-
 // console.log(superUser);
 // console.log(superUser.myAgents);
 // console.log(superUser.myAgents[0].trips);
 
 module.exports = {
-    superUser: superUser
-}
-
+  superUser: superUser,
+};

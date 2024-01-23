@@ -8,6 +8,6 @@ class Namespace {
       this.endpoint = endpoint;
       this.rooms = [];
     }
-  }
+}
 
 module.exports = Namespace;

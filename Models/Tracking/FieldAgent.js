@@ -14,6 +14,10 @@ class FieldAgent {
   addTrip (pickedTrip) {
     this.trips.push(pickedTrip)
   }
+
+  updateMovement(coords) {
+    this.movement = [...this.movement, coords]
+  }
 }
 
 module.exports = FieldAgent;
