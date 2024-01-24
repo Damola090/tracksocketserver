@@ -27,10 +27,10 @@ const server = http.createServer(app);
 
 const io = socketio(server,{
   cors:{
-    origin: 'https://tracksocketserver-dev-chke.1.us-1.fl0.io:8080',
+    origin: ['http://exp://192.168.100.142:8081'],
     credentials: true,
     methods: ["GET", "POST"],
-        transports: ['websocket', 'polling'],
+    transports: ['websocket', 'polling'],
   }
 });
 
