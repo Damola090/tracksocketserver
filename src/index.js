@@ -1,7 +1,7 @@
 //Node - Http Core Module
 const http = require("http");
 const express = require("express");
-const socketio = require('socket.io');
+const socketio = require("socket.io");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -15,7 +15,15 @@ const socketIo = require("socket.io");
 //Import Our Express Application
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://exp:192.168.100.142:8081"],
+    credentials: true,
+    methods: ["GET", "POST"],
+    transports: ["websocket", "polling"],
+  })
+);
+
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,15 +33,14 @@ const server = http.createServer(app);
 
 //Create a Socket-io Server onTop of The Http Server
 
-const io = socketio(server,{
-  cors:{
-    origin: ['https://exp:192.168.100.142:8081'],
+const io = socketio(server, {
+  cors: {
+    origin: ["https://exp:192.168.100.142:8081"],
     credentials: true,
     methods: ["GET", "POST"],
-    transports: ['websocket', 'polling'],
-  }
+    transports: ["websocket", "polling"],
+  },
 });
-
 
 const PORT = process.env.PORT || 8081;
 
@@ -123,7 +130,7 @@ io.of(superUser.namespaceEndpoint).on("connection", (socket) => {
     const selectedTrip = superUser.trips.find(
       (singleTrip) => singleTrip.id === CoordsObject.tripRoom_id
     );
-    
+
     const agentIncharge = superUser.myAgents.find(
       (singleAgent) => singleAgent.id === selectedTrip.agentId
     );
