@@ -1,6 +1,7 @@
 //Node - Http Core Module
 const http = require("http");
 const express = require("express");
+const socketio = require('socket.io');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -23,10 +24,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const server = http.createServer(app);
 
 //Create a Socket-io Server onTop of The Http Server
-const io = require("socket.io")(server, {
-  pingInterval: 30000, // 30 seconds
-  pingTimeout: 5000, // 5 seconds
+
+const io = socketio(server,{
+  cors:{
+    origin: 'https://tracksocketserver-dev-chke.1.us-1.fl0.io',
+    credentials: true,
+    methods: ["GET", "POST"],
+        transports: ['websocket', 'polling'],
+  }
 });
+
 
 const PORT = process.env.PORT || 8080;
 
