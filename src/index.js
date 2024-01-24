@@ -27,7 +27,7 @@ const server = http.createServer(app);
 
 const io = socketio(server,{
   cors:{
-    origin: ['http://exp:192.168.100.142:8081'],
+    origin: ['https://exp:192.168.100.142:8081'],
     credentials: true,
     methods: ["GET", "POST"],
     transports: ['websocket', 'polling'],
@@ -35,7 +35,7 @@ const io = socketio(server,{
 });
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 server.listen(PORT, () => {
   console.log(`Socket.io Server is running on port ${PORT}`);
