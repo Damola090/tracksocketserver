@@ -27,7 +27,7 @@ const server = http.createServer(app);
 
 const io = socketio(server,{
   cors:{
-    origin: ['http://exp://192.168.100.142:8081'],
+    origin: ['http://exp:192.168.100.142:8081'],
     credentials: true,
     methods: ["GET", "POST"],
     transports: ['websocket', 'polling'],
